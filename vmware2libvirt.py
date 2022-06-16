@@ -236,11 +236,11 @@ except:
     error
 
 libvirt_xml = '''<domain type=\'''' + domain + '''\'>
-  <name>''' + get_vmx_value(vmx, "displayName") + '''</name>
-  <uuid>''' + get_new_uuid() + '''</uuid>
-  <memory>''' + get_memory(vmx) + '''</memory>
-  <currentMemory>''' + get_memory(vmx) + '''</currentMemory>
-  <vcpu>''' + get_vcpunr(vmx) + '''</vcpu>
+  <name>''' + str(get_vmx_value(vmx, "displayName")) + '''</name>
+  <uuid>''' + str(get_new_uuid()) + '''</uuid>
+  <memory>''' + str(get_memory(vmx)) + '''</memory>
+  <currentMemory>''' + str(get_memory(vmx)) + '''</currentMemory>
+  <vcpu>''' + str(get_vcpunr(vmx)) + '''</vcpu>
   <os>
     <type arch=\'''' + get_arch(vmx) + '''\' machine='pc'>hvm</type>
     <boot dev='hd'/>
@@ -257,7 +257,7 @@ libvirt_xml = '''<domain type=\'''' + domain + '''\'>
     <disk type='file' device='disk'>
       <source file=\'''' + disk + '''\'/>
       <target dev='hda\' ''' + diskbus + '''/>
-    </disk>''' + get_network(vmx,  bridge, netmodel) + '''
+    </disk>''' + str(get_network(vmx,  bridge, netmodel)) + '''
     <input type='mouse' bus='ps2'/>
     <graphics type='vnc' port='-1' listen='127.0.0.1'/>
   </devices>
