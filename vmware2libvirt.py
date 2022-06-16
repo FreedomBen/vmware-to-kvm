@@ -38,18 +38,18 @@ class V2LError(Exception):
 
 def warn(msg):
     '''Print warning message'''
-    print >> sys.stderr, "WARN: " + msg
+    print("WARN: " + msg, file=sys.stderr)
 
 def error(msg):
     '''Print error message and exit'''
-    print >> sys.stderr, "ERROR: " + msg
+    print("ERROR: " + msg, file=sys.stderr)
     sys.exit(1)
 
 def cmd(command):
     '''Try to execute the given command.'''
     try:
         sp = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    except OSError, e:
+    except OSError as e:
         return [127, str(e)]
 
     out = sp.communicate()[0]
@@ -203,7 +203,7 @@ except:
 
 try:
     orig = open(opts.vmxfile, 'r')
-except OSError, e:
+except OSError as e:
     raise V2LError(e.value)
 except Exception:
     raise
@@ -258,6 +258,6 @@ libvirt_xml = '''<domain type=\'''' + domain + '''\'>
   </devices>
 </domain>'''
 
-print libvirt_xml
+print(libvirt_xml)
 
 orig.close()
