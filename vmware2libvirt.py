@@ -17,6 +17,11 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
+# Retrieved Thu June 16, 2022 15:12:43 PM from:
+#   http://bazaar.launchpad.net/~ubuntu-virt/virt-goodies/trunk/view/head:/vmware2libvirt
+#
+# Updated by Benjamin Porter for Python 3
+#
 
 from optparse import OptionParser
 import os
