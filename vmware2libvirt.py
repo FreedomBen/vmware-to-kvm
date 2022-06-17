@@ -20,7 +20,11 @@
 # Retrieved Thu June 16, 2022 15:12:43 PM from:
 #   http://bazaar.launchpad.net/~ubuntu-virt/virt-goodies/trunk/view/head:/vmware2libvirt
 #
-# Updated by Benjamin Porter for Python 3
+# Updated by Benjamin Porter:
+#
+#   * Update from Python 2 to Python 3
+#   * Bug fixes
+#
 #
 
 from optparse import OptionParser
@@ -105,7 +109,7 @@ def get_new_uuid():
     (rc, out) = cmd(['uuidgen'])
     if rc != 0:
         raise V2LError("'uuidgen' exited with error: " + out)
-    return out.strip()
+    return out.strip().decode()
 
 def get_disk(dir, vmx):
     '''Detect the disk vmware image uses'''
